@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Description of APP -->
     <string name="app_name">CriminalIntent</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
 
+    <!-- Description title activity -->
+    <string name="title_activity_crime">CrimeActivity</string>
+
+    <!-- Description crime title hint -->
+    <string name="crime_title_hint">Enter a title for the crime.</string>
+
+    <!-- Description of crime title -->
+    <string name="crime_title_label">Title</string>
+
+    <!-- Description of crime details -->
+  	<string name="crime_details_label">Details</string>
+
+    <!-- Description of crime solved -->
+  	<string name="crime_solved_label">Solved?</string>
 </resources>

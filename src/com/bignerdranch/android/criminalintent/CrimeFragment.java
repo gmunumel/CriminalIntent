@@ -47,7 +47,9 @@ public class CrimeFragment extends Fragment {
         });
 
         mDateButton = (Button)v.findViewById(R.id.crime_date);
-        mDateButton.setText(mCrime.getDate().toString());
+        // Challenge | Improvement in DateFormat
+        mDateButton.setText(android.text.format.DateFormat.format("E, MMM dd, yyyy.", mCrime.getDate()));
+        // end challenge
         mDateButton.setEnabled(false);
         
         mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);

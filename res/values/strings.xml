@@ -18,4 +18,13 @@
 
     <!-- Description of crime solved -->
   	<string name="crime_solved_label">Solved?</string>
+
+    <!-- Description of crime title -->
+  	<string name="crimes_title">Crimes</string>
+
+    <!-- Description of crime date dummy -->
+  	<string name="crime_date_dummy">Crime Date Dummy</string>
+
+    <!-- Description of crime title dummy -->
+  	<string name="crime_title_dummy">Crime TitleTitle  Dummy</string>
 </resources>

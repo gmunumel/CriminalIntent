@@ -33,4 +33,19 @@
 
     <!-- Description of the time picker --> 
   	<string name="time_picker_title">Time of crime:</string>
+
+    <!-- Description of the date time --> 
+  	<string name="change_date_time">Change Date Time</string>
+
+    <!-- Description of the choose date time --> 
+  	<string name="choose_date_time">Choose date time:</string>
+
+    <!-- Description date --> 
+  	<string name="date">Date</string>
+
+    <!-- Description time --> 
+  	<string name="time">Time</string>
+
+    <!-- Description separator --> 
+  	<string name="separator">---- Or ----</string>
 </resources>

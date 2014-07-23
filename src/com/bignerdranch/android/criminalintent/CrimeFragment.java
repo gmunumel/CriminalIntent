@@ -26,12 +26,13 @@ public class CrimeFragment extends Fragment {
 	
 	private static final String DIALOG_DATE = "date";
 	private static final String DIALOG_TIME = "time";
+	private static final String DIALOG_CHOOSE_DATE_TIME = "choose_date_time";
 	private static final int REQUEST_DATE = 0;
 	private static final int REQUEST_TIME = 1;
 	
 	private Crime mCrime;
 	private EditText mTitleField;
-	private Button mDateButton, mTimeButton;
+	private Button mDateButton, mTimeButton, mDateTimeButton;
     private CheckBox mSolvedCheckBox;
 	
 	@Override
@@ -79,7 +80,7 @@ public class CrimeFragment extends Fragment {
         	}
         });
         
-        // Challenge final chapter 12 | Adding a TimePicker
+        // Challenge 1 final chapter 12 | Adding a TimePicker
         mTimeButton = (Button)v.findViewById(R.id.crime_time);
         updateTime();
         mTimeButton.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +93,20 @@ public class CrimeFragment extends Fragment {
         		dialog.show(fm, DIALOG_TIME);
         	}
         });
-        // end challenge
+        // end challenge 1
+
+        // Challenge 2 final chapter 12 | Adding a new Fragment to 
+        // choose if you change Date or Time
+        mDateTimeButton = (Button)v.findViewById(R.id.crime_date_time);
+        mDateTimeButton.setOnClickListener(new View.OnClickListener() {
+        	public void onClick(View v) {
+        		FragmentManager fm = getActivity()
+        				.getSupportFragmentManager();
+        		ChooseDateTimeFragment dialog = new ChooseDateTimeFragment();
+        		dialog.show(fm, DIALOG_CHOOSE_DATE_TIME);
+        	}
+        });
+        // end challenge 2
         
         mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);
         mSolvedCheckBox.setChecked(mCrime.isSolved());

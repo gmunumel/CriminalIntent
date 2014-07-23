@@ -1095,18 +1095,22 @@ containing a value of this type.
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int checkbox=0x7f05002e;
+        public static final int choose_date_button=0x7f050040;
+        public static final int choose_time_button=0x7f050042;
         public static final int collapseActionView=0x7f05000d;
-        public static final int crime_date=0x7f050041;
-        public static final int crime_list_item_dateTextView=0x7f050046;
-        public static final int crime_list_item_solvedCheckBox=0x7f050044;
-        public static final int crime_list_item_titleTextView=0x7f050045;
-        public static final int crime_solved=0x7f050043;
-        public static final int crime_time=0x7f050042;
-        public static final int crime_title=0x7f050040;
+        public static final int crime_date=0x7f050045;
+        public static final int crime_date_time=0x7f05003f;
+        public static final int crime_datetime=0x7f050047;
+        public static final int crime_list_item_dateTextView=0x7f05004b;
+        public static final int crime_list_item_solvedCheckBox=0x7f050049;
+        public static final int crime_list_item_titleTextView=0x7f05004a;
+        public static final int crime_solved=0x7f050048;
+        public static final int crime_time=0x7f050046;
+        public static final int crime_title=0x7f050044;
         public static final int default_activity_button=0x7f050029;
         public static final int dialog=0x7f05000e;
         public static final int dialog_date_datePicker=0x7f05003e;
-        public static final int dialog_time_timePicker=0x7f05003f;
+        public static final int dialog_time_timePicker=0x7f050043;
         public static final int disableHome=0x7f050008;
         public static final int dropdown=0x7f05000f;
         public static final int edit_query=0x7f050031;
@@ -1145,6 +1149,7 @@ containing a value of this type.
         public static final int split_action_bar=0x7f05001f;
         public static final int submit_area=0x7f05003a;
         public static final int tabMode=0x7f050002;
+        public static final int textView1=0x7f050041;
         public static final int title=0x7f05002c;
         public static final int top_action_bar=0x7f050021;
         public static final int up=0x7f050022;
@@ -1204,10 +1209,11 @@ containing a value of this type.
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_fragment=0x7f030018;
         public static final int dialog_date=0x7f030019;
-        public static final int dialog_time=0x7f03001a;
-        public static final int fragment_crime=0x7f03001b;
-        public static final int list_item_crime=0x7f03001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
+        public static final int dialog_date_time=0x7f03001a;
+        public static final int dialog_time=0x7f03001b;
+        public static final int fragment_crime=0x7f03001c;
+        public static final int list_item_crime=0x7f03001d;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1253,6 +1259,12 @@ containing a value of this type.
         /**  Description of APP 
          */
         public static final int app_name=0x7f0a000d;
+        /**  Description of the date time 
+         */
+        public static final int change_date_time=0x7f0a0018;
+        /**  Description of the choose date time 
+         */
+        public static final int choose_date_time=0x7f0a0019;
         /**  Description of crime date dummy 
          */
         public static final int crime_date_dummy=0x7f0a0014;
@@ -1274,9 +1286,18 @@ containing a value of this type.
         /**  Description of crime title 
          */
         public static final int crimes_title=0x7f0a0013;
+        /**  Description date 
+         */
+        public static final int date=0x7f0a001a;
         /**  Description of the date picker title 
          */
         public static final int date_picker_title=0x7f0a0016;
+        /**  Description separator 
+         */
+        public static final int separator=0x7f0a001c;
+        /**  Description time 
+         */
+        public static final int time=0x7f0a001b;
         /**  Description of the time picker 
          */
         public static final int time_picker_title=0x7f0a0017;

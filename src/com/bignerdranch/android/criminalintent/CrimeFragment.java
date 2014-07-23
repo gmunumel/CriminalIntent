@@ -1,9 +1,13 @@
 package com.bignerdranch.android.criminalintent;
 
+import java.util.Date;
 import java.util.UUID;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -19,6 +23,9 @@ public class CrimeFragment extends Fragment {
 
 	public static final String EXTRA_CRIME_ID =
 			"com.bignerdranch.android.criminalintent.crime_id";
+	
+	private static final String DIALOG_DATE = "date";
+	private static final int REQUEST_DATE = 0;
 	
 	private Crime mCrime;
 	private EditText mTitleField;
@@ -56,9 +63,19 @@ public class CrimeFragment extends Fragment {
 
         mDateButton = (Button)v.findViewById(R.id.crime_date);
         // Challenge | Improvement in DateFormat
-        mDateButton.setText(android.text.format.DateFormat.format("E, MMM dd, yyyy.", mCrime.getDate()));
+        //mDateButton.setText(android.text.format.DateFormat.format("E, MMM dd, yyyy.", mCrime.getDate()));
         // end challenge
-        mDateButton.setEnabled(false);
+        updateDate();
+        mDateButton.setOnClickListener(new View.OnClickListener() {
+        	public void onClick(View v) {
+        		FragmentManager fm = getActivity()
+        				.getSupportFragmentManager();
+        		DatePickerFragment dialog = DatePickerFragment
+        				.newInstance(mCrime.getDate());
+        		dialog.setTargetFragment(CrimeFragment.this, REQUEST_DATE);
+        		dialog.show(fm, DIALOG_DATE);
+        	}
+        });
         
         mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);
         mSolvedCheckBox.setChecked(mCrime.isSolved());
@@ -72,6 +89,21 @@ public class CrimeFragment extends Fragment {
         return v;
     }
 	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    if (resultCode != Activity.RESULT_OK) return;
+	    if (requestCode == REQUEST_DATE) {
+	        Date date = (Date)data
+	            .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+	        mCrime.setDate(date);
+	        updateDate();
+	    }
+	}
+	
+	private void updateDate() {
+		mDateButton.setText(mCrime.getDate().toString());
+	}
+
 	public static CrimeFragment newInstance(UUID crimeId) {
 		Bundle args = new Bundle();
 		args.putSerializable(EXTRA_CRIME_ID, crimeId);

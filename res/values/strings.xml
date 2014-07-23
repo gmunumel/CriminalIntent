@@ -27,4 +27,7 @@
 
     <!-- Description of crime title dummy -->
   	<string name="crime_title_dummy">Crime TitleTitle  Dummy</string>
+
+    <!-- Description of the date picker title --> 
+  	<string name="date_picker_title">Date of crime:</string>
 </resources>

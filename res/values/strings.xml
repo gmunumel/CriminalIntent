@@ -30,4 +30,7 @@
 
     <!-- Description of the date picker title --> 
   	<string name="date_picker_title">Date of crime:</string>
+
+    <!-- Description of the time picker --> 
+  	<string name="time_picker_title">Time of crime:</string>
 </resources>

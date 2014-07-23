@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class CrimeListFragment extends ListFragment {
-	private static final String TAG = "CrimeListFragment";
+	//private static final String TAG = "CrimeListFragment";
 
 	private ArrayList<Crime> mCrimes;
 

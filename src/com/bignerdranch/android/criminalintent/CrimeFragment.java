@@ -25,11 +25,13 @@ public class CrimeFragment extends Fragment {
 			"com.bignerdranch.android.criminalintent.crime_id";
 	
 	private static final String DIALOG_DATE = "date";
+	private static final String DIALOG_TIME = "time";
 	private static final int REQUEST_DATE = 0;
+	private static final int REQUEST_TIME = 1;
 	
 	private Crime mCrime;
 	private EditText mTitleField;
-	private Button mDateButton;
+	private Button mDateButton, mTimeButton;
     private CheckBox mSolvedCheckBox;
 	
 	@Override
@@ -77,6 +79,21 @@ public class CrimeFragment extends Fragment {
         	}
         });
         
+        // Challenge final chapter 12 | Adding a TimePicker
+        mTimeButton = (Button)v.findViewById(R.id.crime_time);
+        updateTime();
+        mTimeButton.setOnClickListener(new View.OnClickListener() {
+        	public void onClick(View v) {
+        		FragmentManager fm = getActivity()
+        				.getSupportFragmentManager();
+        		TimePickerFragment dialog = TimePickerFragment
+        				.newInstance(mCrime.getDate());
+        		dialog.setTargetFragment(CrimeFragment.this, REQUEST_TIME);
+        		dialog.show(fm, DIALOG_TIME);
+        	}
+        });
+        // end challenge
+        
         mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);
         mSolvedCheckBox.setChecked(mCrime.isSolved());
         mSolvedCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -97,11 +114,20 @@ public class CrimeFragment extends Fragment {
 	            .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
 	        mCrime.setDate(date);
 	        updateDate();
+	    } else if (requestCode == REQUEST_TIME) {
+	        Date date = (Date)data
+	            .getSerializableExtra(TimePickerFragment.EXTRA_TIME);
+	        mCrime.setDate(date);
+	        updateTime();
 	    }
 	}
 	
 	private void updateDate() {
 		mDateButton.setText(mCrime.getDate().toString());
+	}
+
+	private void updateTime() {
+        mTimeButton.setText(android.text.format.DateFormat.format("K:m a", mCrime.getDate()));
 	}
 
 	public static CrimeFragment newInstance(UUID crimeId) {

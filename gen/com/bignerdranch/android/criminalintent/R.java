@@ -1100,11 +1100,10 @@ containing a value of this type.
         public static final int collapseActionView=0x7f05000d;
         public static final int crime_date=0x7f050045;
         public static final int crime_date_time=0x7f05003f;
-        public static final int crime_datetime=0x7f050047;
-        public static final int crime_list_item_dateTextView=0x7f05004b;
-        public static final int crime_list_item_solvedCheckBox=0x7f050049;
-        public static final int crime_list_item_titleTextView=0x7f05004a;
-        public static final int crime_solved=0x7f050048;
+        public static final int crime_list_item_dateTextView=0x7f05004a;
+        public static final int crime_list_item_solvedCheckBox=0x7f050048;
+        public static final int crime_list_item_titleTextView=0x7f050049;
+        public static final int crime_solved=0x7f050047;
         public static final int crime_time=0x7f050046;
         public static final int crime_title=0x7f050044;
         public static final int default_activity_button=0x7f050029;

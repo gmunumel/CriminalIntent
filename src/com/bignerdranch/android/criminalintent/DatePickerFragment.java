@@ -21,15 +21,6 @@ public class DatePickerFragment extends DialogFragment {
 	
 	private Date mDate;
 	
-	private void sendResult(int resultCode) {
-		if (getTargetFragment() == null) 
-	        return;
-	    Intent i = new Intent();
-	    i.putExtra(EXTRA_DATE, mDate);
-	    getTargetFragment()
-	        .onActivityResult(getTargetRequestCode(), resultCode, i);
-	}
-
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState){
 		mDate = (Date)getArguments().getSerializable(EXTRA_DATE);
@@ -76,5 +67,14 @@ public class DatePickerFragment extends DialogFragment {
 		fragment.setArguments(args);
 		
 		return fragment;
+	}
+
+	private void sendResult(int resultCode) {
+		if (getTargetFragment() == null) 
+	        return;
+	    Intent i = new Intent();
+	    i.putExtra(EXTRA_DATE, mDate);
+	    getTargetFragment()
+	        .onActivityResult(getTargetRequestCode(), resultCode, i);
 	}
 }

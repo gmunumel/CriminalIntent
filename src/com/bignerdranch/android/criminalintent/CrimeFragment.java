@@ -102,7 +102,9 @@ public class CrimeFragment extends Fragment {
         	public void onClick(View v) {
         		FragmentManager fm = getActivity()
         				.getSupportFragmentManager();
-        		ChooseDateTimeFragment dialog = new ChooseDateTimeFragment();
+        		ChooseDateTimeFragment dialog = ChooseDateTimeFragment
+        				.newInstance(mCrime.getDate());
+        		dialog.setTargetFragment(CrimeFragment.this, REQUEST_DATE);
         		dialog.show(fm, DIALOG_CHOOSE_DATE_TIME);
         	}
         });

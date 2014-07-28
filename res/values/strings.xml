@@ -48,4 +48,19 @@
 
     <!-- Description separator --> 
   	<string name="separator">---- Or ----</string>
+  	
+    <!-- Description new crime --> 
+  	<string name="new_crime">New Crime</string>
+
+    <!-- Description show subtitle --> 
+  	<string name="show_subtitle">Show Subtitle</string>
+
+    <!-- Description hide subtitle --> 
+  	<string name="hide_subtitle">Hide Subtitle</string> 
+
+    <!-- Description of the subtitle --> 
+  	<string name="subtitle">If you see something, say something.</string>
+
+    <!-- Description delete a crime --> 
+  	<string name="delete_crime">Delete</string>
 </resources>

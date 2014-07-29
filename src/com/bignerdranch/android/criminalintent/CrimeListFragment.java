@@ -14,16 +14,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class CrimeListFragment extends ListFragment {
 
-	private boolean mSubtitleVisible;
 	private static final String TAG = "CrimeListFragment";
 
 	private ArrayList<Crime> mCrimes;
+	private Button mAddCrimeButton;
+	private boolean mSubtitleVisible;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,14 +49,33 @@ public class CrimeListFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, 
             Bundle savedInstanceState) {
-        View v = super.onCreateView(inflater, parent, savedInstanceState);
+        // View v = super.onCreateView(inflater, parent, savedInstanceState);
+		// inflate my own layout to show the empty list or the crimes list
+        View v = inflater.inflate(R.layout.list_all_crimes, parent, false);
         
+        // display the subtitle according to android version
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {   
             if (mSubtitleVisible) {
                 getActivity().getActionBar().setSubtitle(R.string.subtitle);
             }
         }
         
+        mAddCrimeButton = (Button)v.findViewById(R.id.add_crimeButton);
+        if(mCrimes.size() > 0) {
+        	mAddCrimeButton.setVisibility(View.GONE);
+        } else {
+        	mAddCrimeButton.setVisibility(View.VISIBLE);
+            mAddCrimeButton.setOnClickListener(new View.OnClickListener() {
+            	public void onClick(View v) {
+            		Crime crime = new Crime();
+            		CrimeLab.get(getActivity()).addCrime(crime);
+            		Intent i = new Intent(getActivity(), CrimePagerActivity.class);
+            		i.putExtra(CrimeFragment.EXTRA_CRIME_ID, crime.getId());
+            		startActivityForResult(i, 0);
+                }
+            });
+        }
+        	
         return v;
     }
 	 

@@ -20,6 +20,7 @@ public class DatePickerFragment extends DialogFragment {
 			"com.bignerdranch.android.criminalintent.date";
 	
 	private Date mDate;
+	private DatePicker mDatePicker;
 	
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState){
@@ -35,8 +36,8 @@ public class DatePickerFragment extends DialogFragment {
 		View v = getActivity().getLayoutInflater()
 				.inflate(R.layout.dialog_date, null);
 		
-		DatePicker datePicker = (DatePicker)v.findViewById(R.id.dialog_date_datePicker);
-        datePicker.init(year, month, day, new OnDateChangedListener() {
+		mDatePicker = (DatePicker)v.findViewById(R.id.dialog_date_datePicker);
+        mDatePicker.init(year, month, day, new OnDateChangedListener() {
         	public void onDateChanged(DatePicker view, int year, int month, int day) {
         		// Translate year, month, day into a Date object using a calendar
         		mDate = new GregorianCalendar(year, month, day).getTime();

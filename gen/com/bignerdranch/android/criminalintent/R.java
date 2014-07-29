@@ -1092,6 +1092,7 @@ containing a value of this type.
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050025;
         public static final int activity_chooser_view_content=0x7f050026;
+        public static final int add_crimeButton=0x7f050048;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int checkbox=0x7f05002e;
@@ -1100,9 +1101,9 @@ containing a value of this type.
         public static final int collapseActionView=0x7f05000d;
         public static final int crime_date=0x7f050045;
         public static final int crime_date_time=0x7f05003f;
-        public static final int crime_list_item_dateTextView=0x7f05004a;
-        public static final int crime_list_item_solvedCheckBox=0x7f050048;
-        public static final int crime_list_item_titleTextView=0x7f050049;
+        public static final int crime_list_item_dateTextView=0x7f05004b;
+        public static final int crime_list_item_solvedCheckBox=0x7f050049;
+        public static final int crime_list_item_titleTextView=0x7f05004a;
         public static final int crime_solved=0x7f050047;
         public static final int crime_time=0x7f050046;
         public static final int crime_title=0x7f050044;
@@ -1124,8 +1125,8 @@ containing a value of this type.
         public static final int image=0x7f050028;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f05002a;
-        public static final int menu_item_new_crime=0x7f05004b;
-        public static final int menu_item_show_subtitle=0x7f05004c;
+        public static final int menu_item_new_crime=0x7f05004c;
+        public static final int menu_item_show_subtitle=0x7f05004d;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
@@ -1213,8 +1214,9 @@ containing a value of this type.
         public static final int dialog_date_time=0x7f03001a;
         public static final int dialog_time=0x7f03001b;
         public static final int fragment_crime=0x7f03001c;
-        public static final int list_item_crime=0x7f03001d;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
+        public static final int list_all_crimes=0x7f03001d;
+        public static final int list_item_crime=0x7f03001e;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
     }
     public static final class menu {
         public static final int fragment_crime_list=0x7f0c0000;
@@ -1260,6 +1262,9 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
+        /**  Description add a new crime 
+         */
+        public static final int add_crime=0x7f0a0023;
         /**  Description of APP 
          */
         public static final int app_name=0x7f0a000d;
@@ -1305,6 +1310,9 @@ containing a value of this type.
         /**  Description new crime 
          */
         public static final int new_crime=0x7f0a001d;
+        /**  Description no results 
+         */
+        public static final int no_results=0x7f0a0022;
         /**  Description separator 
          */
         public static final int separator=0x7f0a001c;

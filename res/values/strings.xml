@@ -63,4 +63,10 @@
 
     <!-- Description delete a crime --> 
   	<string name="delete_crime">Delete</string>
+
+    <!-- Description no results --> 
+  	<string name="no_results">There are not crimes.</string>
+
+    <!-- Description add a new crime --> 
+  	<string name="add_crime">Add crime</string>
 </resources>

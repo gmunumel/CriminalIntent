@@ -56,9 +56,13 @@ public class CriminalIntentJSONSerializer {
 		}
 		return crimes;
 	}
+
 	// Saving the list of crimes to a file in disk
-	public void saveCrimes(ArrayList<Crime> crimes)
+	public void saveCrimes(ArrayList<Crime> crimes, boolean externalFile)
 			throws JSONException, IOException {
+		
+		OutputStream out;
+
 		// Build an array in JSON
 		JSONArray array = new JSONArray();
 		for (Crime c : crimes)
@@ -67,8 +71,13 @@ public class CriminalIntentJSONSerializer {
 		// Write the file to disk
 		Writer writer = null;
 		try {
-			OutputStream out = mContext
+			if (externalFile) {
+				out = mContext
+					.openFileOutput(mFilename, Context.MODE_WORLD_WRITEABLE);
+			} else {
+				out = mContext
 					.openFileOutput(mFilename, Context.MODE_PRIVATE);
+			}
 			writer = new OutputStreamWriter(out);
 			writer.write(array.toString());
 		} finally {

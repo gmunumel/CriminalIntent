@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 
 public class CrimeLab {
@@ -42,9 +43,16 @@ public class CrimeLab {
 	}
 	
 	// Saving the parameters 
-	public boolean saveCrimes() {
+	public boolean saveCrimes(boolean external) {
+		// Check if the external mode is available
+		if (external) {
+			if (!isExternalStorageWritable()){
+				Log.e(TAG, "Error external mode not available");
+				return false;
+			}
+		}
 		try {
-			mSerializer.saveCrimes(mCrimes);
+			mSerializer.saveCrimes(mCrimes, external);
 			Log.d(TAG, "crimes saved to file");
 			return true;
 		} catch (Exception e) {
@@ -52,7 +60,7 @@ public class CrimeLab {
 			return false;
 		}
 	}
-
+	
 	public ArrayList<Crime> getCrimes() {
 		return mCrimes;
 	}
@@ -63,5 +71,14 @@ public class CrimeLab {
 				return c;
 		}
 		return null;
+	}
+
+	// Checks if external storage is available for read and write 
+	private boolean isExternalStorageWritable() {
+	    String state = Environment.getExternalStorageState();
+	    if (Environment.MEDIA_MOUNTED.equals(state)) {
+	        return true;
+	    }
+	    return false;
 	}
 }

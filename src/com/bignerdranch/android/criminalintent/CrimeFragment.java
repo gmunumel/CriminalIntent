@@ -66,7 +66,9 @@ public class CrimeFragment extends Fragment {
 	@Override
 	public void onPause() {
 		super.onPause();
-		CrimeLab.get(getActivity()).saveCrimes();
+		// True to external storage
+		// False otherwise
+		CrimeLab.get(getActivity()).saveCrimes(true);
 	}
 
 	@TargetApi(11)

@@ -62,6 +62,13 @@ public class CrimeFragment extends Fragment {
 		}
 	}
 	
+	// Save the crimes on file when it's paused
+	@Override
+	public void onPause() {
+		super.onPause();
+		CrimeLab.get(getActivity()).saveCrimes();
+	}
+
 	@TargetApi(11)
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, 

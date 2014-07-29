@@ -3,8 +3,16 @@ package com.bignerdranch.android.criminalintent;
 import java.util.Date;
 import java.util.UUID;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Crime {
 
+	private static final String JSON_ID = "id";
+	private static final String JSON_TITLE = "title";
+	private static final String JSON_SOLVED = "solved";
+	private static final String JSON_DATE = "date";
+	
 	private UUID mId;
 	private String mTitle;
 	private Date mDate;
@@ -14,6 +22,26 @@ public class Crime {
 		// Generate unique identifier
 		mId = UUID.randomUUID();
 		mDate = new Date();
+	}
+	
+	// Get json serialized parameters to local variables
+	public Crime(JSONObject json) throws JSONException {
+		mId = UUID.fromString(json.getString(JSON_ID));
+		if (json.has(JSON_TITLE)) {
+			mTitle = json.getString(JSON_TITLE);
+		}
+		mSolved = json.getBoolean(JSON_SOLVED);
+		mDate = new Date(json.getLong(JSON_DATE));
+	}
+
+	// Convert Crime parameters to json format
+	public JSONObject toJSON() throws JSONException {
+		JSONObject json = new JSONObject();
+		json.put(JSON_ID, mId.toString());
+		json.put(JSON_TITLE, mTitle);
+		json.put(JSON_SOLVED, mSolved);
+		json.put(JSON_DATE, mDate.getTime());
+		return json;
 	}
 
 	public String getTitle() {

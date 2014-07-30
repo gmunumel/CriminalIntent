@@ -1,7 +1,10 @@
 package com.bignerdranch.android.criminalintent;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -15,8 +18,10 @@ import org.json.JSONException;
 import org.json.JSONTokener;
 
 import android.content.Context;
+import android.util.Log;
 
 public class CriminalIntentJSONSerializer {
+	private static final String TAG = "CriminalIntentJSONSerializer";
 
 	private Context mContext;
 	private String mFilename;
@@ -24,17 +29,23 @@ public class CriminalIntentJSONSerializer {
 	public CriminalIntentJSONSerializer(Context c, String f) {
 		mContext = c;
 		mFilename = f;
-		
 	}
 	
 	// Load crimes from a  file in disk
-	public ArrayList<Crime> loadCrimes() throws IOException, JSONException {
+	public ArrayList<Crime> loadCrimes(boolean externalFile) 
+			throws IOException, JSONException {
 		ArrayList<Crime> crimes = new ArrayList<Crime>();
 		BufferedReader reader = null;
 		try {
 			// Open and read the file into a StringBuilder
-			InputStream in = mContext.openFileInput(mFilename);
-			reader = new BufferedReader(new InputStreamReader(in));
+			if(externalFile) {
+				File extCrimeFile = new File(mContext.getExternalFilesDir(null), mFilename);
+				FileInputStream extFile = new FileInputStream(extCrimeFile);
+				reader = new BufferedReader(new InputStreamReader(extFile));
+			} else {
+				InputStream in = mContext.openFileInput(mFilename);
+				reader = new BufferedReader(new InputStreamReader(in));
+			}
 			StringBuilder jsonString = new StringBuilder();
 			String line = null;
 			while ((line = reader.readLine()) != null) {
@@ -61,8 +72,6 @@ public class CriminalIntentJSONSerializer {
 	public void saveCrimes(ArrayList<Crime> crimes, boolean externalFile)
 			throws JSONException, IOException {
 		
-		OutputStream out;
-
 		// Build an array in JSON
 		JSONArray array = new JSONArray();
 		for (Crime c : crimes)
@@ -72,13 +81,18 @@ public class CriminalIntentJSONSerializer {
 		Writer writer = null;
 		try {
 			if (externalFile) {
-				out = mContext
-					.openFileOutput(mFilename, Context.MODE_WORLD_WRITEABLE);
+				// get the external files dir
+		        File extDataDir = new File(mContext.getExternalFilesDir(null), mFilename);
+		        // log the dir to be written to
+		        Log.d(TAG, "The external files dir is: " + extDataDir.toString());
+				File extCrimeFile = new File(extDataDir.toString());
+				FileOutputStream extFile = new FileOutputStream(extCrimeFile);
+				writer = new OutputStreamWriter(extFile);
 			} else {
-				out = mContext
+				OutputStream out = mContext
 					.openFileOutput(mFilename, Context.MODE_PRIVATE);
+				writer = new OutputStreamWriter(out);
 			}
-			writer = new OutputStreamWriter(out);
 			writer.write(array.toString());
 		} finally {
 			if (writer != null)

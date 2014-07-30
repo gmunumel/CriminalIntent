@@ -24,7 +24,9 @@ public class CrimeLab {
 		// Loading crimes from a file on disk using
 		// serialized json format
 		try {
-			mCrimes = mSerializer.loadCrimes();
+			// True = load from external file
+			// False = load from internal file
+			mCrimes = mSerializer.loadCrimes(true);
 		} catch (Exception e) {
 			mCrimes = new ArrayList<Crime>();
 			Log.e(TAG, "Error loading crimes: ", e);

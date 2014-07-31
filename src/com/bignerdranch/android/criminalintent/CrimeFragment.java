@@ -14,6 +14,8 @@ import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.ListView;
 
 public class CrimeFragment extends Fragment {
 
@@ -57,6 +60,13 @@ public class CrimeFragment extends Fragment {
 	                NavUtils.navigateUpFromSameTask(getActivity());
 	            }
 				return true;
+			// create menu options for deleting crimes | challenge chapter 18
+			case R.id.menu_item_delete_crime:
+				CrimeLab.get(getActivity()).deleteCrime(mCrime);
+				// Launch CrimeListActivity 
+				Intent i = new Intent(getActivity(), CrimeListActivity.class);
+				startActivity(i);
+				return true;
 			default:
 				return super.onOptionsItemSelected(item);
 		}
@@ -82,6 +92,12 @@ public class CrimeFragment extends Fragment {
         	if (NavUtils.getParentActivityName(getActivity()) != null) {
                 getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
             }
+        }
+        
+        // Nullable Crime instance in case I removed all the
+        // crimes and want to avoid a nullPointerException
+        if (mCrime == null) {
+        	mCrime = new Crime();
         }
 
         mTitleField = (EditText)v.findViewById(R.id.crime_title);
@@ -172,6 +188,13 @@ public class CrimeFragment extends Fragment {
 	        mCrime.setDate(date);
 	        updateTime();
 	    }
+	}
+	
+	// create menu options for deleting crimes | challenge chapter 18
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(R.menu.crime_list_item_context, menu);
 	}
 	
 	private void updateDate() {

@@ -93,6 +93,7 @@ public class CrimeListFragment extends ListFragment {
             // Use contextual action bar on Honeycomb and higher
             listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
             listView.setMultiChoiceModeListener(new MultiChoiceModeListener() {
+
                 public void onItemCheckedStateChanged(ActionMode mode, int position,
                         long id, boolean checked) {
                     // Required, but not used in this implementation
@@ -175,6 +176,7 @@ public class CrimeListFragment extends ListFragment {
                     mSubtitleVisible = false;
                     item.setTitle(R.string.show_subtitle);
                 }
+				return true;
 			default:
 				return super.onOptionsItemSelected(item);
 		}

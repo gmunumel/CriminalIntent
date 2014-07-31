@@ -234,7 +234,8 @@ int drawable abc_textfield_searchview_holo_dark 0x7f020053
 int drawable abc_textfield_searchview_holo_light 0x7f020054
 int drawable abc_textfield_searchview_right_holo_dark 0x7f020055
 int drawable abc_textfield_searchview_right_holo_light 0x7f020056
-int drawable ic_launcher 0x7f020057
+int drawable background_activated 0x7f020057
+int drawable ic_launcher 0x7f020058
 int id action_bar 0x7f05001d
 int id action_bar_activity_content 0x7f050015
 int id action_bar_container 0x7f05001c
@@ -280,8 +281,9 @@ int id ifRoom 0x7f05000a
 int id image 0x7f050028
 int id listMode 0x7f050001
 int id list_item 0x7f05002a
-int id menu_item_new_crime 0x7f05004c
-int id menu_item_show_subtitle 0x7f05004d
+int id menu_item_delete_crime 0x7f05004c
+int id menu_item_new_crime 0x7f05004d
+int id menu_item_show_subtitle 0x7f05004e
 int id middle 0x7f050012
 int id never 0x7f050009
 int id none 0x7f050010
@@ -346,7 +348,8 @@ int layout fragment_crime 0x7f03001c
 int layout list_all_crimes 0x7f03001d
 int layout list_item_crime 0x7f03001e
 int layout support_simple_spinner_dropdown_item 0x7f03001f
-int menu fragment_crime_list 0x7f0c0000
+int menu crime_list_item_context 0x7f0c0000
+int menu fragment_crime_list 0x7f0c0001
 int string abc_action_bar_home_description 0x7f0a0001
 int string abc_action_bar_up_description 0x7f0a0002
 int string abc_action_menu_overflow_description 0x7f0a0003

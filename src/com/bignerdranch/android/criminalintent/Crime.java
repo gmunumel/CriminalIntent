@@ -13,12 +13,14 @@ public class Crime {
 	private static final String JSON_SOLVED = "solved";
 	private static final String JSON_DATE = "date";
 	private static final String JSON_SUSPECT = "suspect";
+	private static final String JSON_SUSPECT_PHONE_NUMBER = "suspect_phone_number";
 	
 	private UUID mId;
 	private String mTitle;
 	private Date mDate;
 	private boolean mSolved;
 	private String mSuspect;
+	private String mSuspectPhoneNumber;
 	
 	public Crime() {
 		// Generate unique identifier
@@ -35,8 +37,10 @@ public class Crime {
 		mSolved = json.getBoolean(JSON_SOLVED);
 		mDate = new Date(json.getLong(JSON_DATE));
 
-		if (json.has(JSON_SUSPECT))
+		if (json.has(JSON_SUSPECT)) {
 			mSuspect = json.getString(JSON_SUSPECT);
+			mSuspectPhoneNumber = json.getString(JSON_SUSPECT_PHONE_NUMBER);
+		}
 	}
 
 	// Convert Crime parameters to json format
@@ -47,6 +51,7 @@ public class Crime {
 		json.put(JSON_SOLVED, mSolved);
 		json.put(JSON_DATE, mDate.getTime());
 		json.put(JSON_SUSPECT, mSuspect);
+		json.put(JSON_SUSPECT_PHONE_NUMBER, mSuspectPhoneNumber);
 		return json;
 	}
 
@@ -84,6 +89,14 @@ public class Crime {
 	
 	public void setSuspect(String suspect) {
 		mSuspect = suspect;
+	}
+
+	public String getSuspectPhoneNumber() {
+		return mSuspectPhoneNumber;
+	}
+	
+	public void setSuspectPhoneNumber(String suspectPhoneNumber) {
+		mSuspectPhoneNumber = suspectPhoneNumber;
 	}
 
 	@Override

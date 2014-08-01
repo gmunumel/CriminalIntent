@@ -1,6 +1,7 @@
 package com.bignerdranch.android.criminalintent;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import android.annotation.TargetApi;
@@ -44,7 +45,7 @@ public class CrimeFragment extends Fragment {
 	private Crime mCrime;
 	private EditText mTitleField;
 	private Button mDateButton, mTimeButton, 
-		mDateTimeButton, mSuspectButton;
+		mDateTimeButton, mSuspectButton, mSuspectCallButton;
     private CheckBox mSolvedCheckBox;
 	
 	@Override
@@ -208,6 +209,22 @@ public class CrimeFragment extends Fragment {
         if (mCrime.getSuspect() != null) {
             mSuspectButton.setText(mCrime.getSuspect());
         }
+
+        // Challenge: Call a suspect | Chapter 21
+        mSuspectCallButton = (Button)v.findViewById(R.id.crime_suspect_callButton);
+        mSuspectCallButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	if (mCrime.getSuspectPhoneNumber() != null) {
+            		Uri number = Uri.parse("tel:" + mCrime.getSuspectPhoneNumber());
+            		Intent i = new Intent(Intent.ACTION_DIAL);
+            		i.setData(number);
+            		startActivity(i);
+            	} else {
+            		
+            	}
+            }
+        });
+        // end of challenge
         
         return v;
     }
@@ -228,14 +245,21 @@ public class CrimeFragment extends Fragment {
 	    } else if (requestCode == REQUEST_CONTACT) {
 	        Uri contactUri = data.getData();
 
+	        // Find the lookup key of the contact
+	        List<String> items = contactUri.getPathSegments();
+            String lookupKey = items.get(2);
+
 	        // Specify which fields you want your query to return
 	        // values for.
 	        String[] queryFields = new String[] { 
-	            ContactsContract.Contacts.DISPLAY_NAME 
+	        	ContactsContract.Contacts.LOOKUP_KEY,
+	            ContactsContract.Contacts.DISPLAY_NAME,
+	            ContactsContract.CommonDataKinds.Phone.NUMBER
 	        };
 
 	        // Perform your query - the contactUri is like a "where"
 	        // clause here
+	        contactUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
 	        Cursor c = getActivity().getContentResolver()
 	            .query(contactUri, queryFields, null, null, null);
 
@@ -244,12 +268,24 @@ public class CrimeFragment extends Fragment {
 	            c.close();
 	            return;
 	        }
-
 	        // Pull out the first column of the first row of data - 
 	        // that is your suspect's name.
 	        c.moveToFirst();
-	        String suspect = c.getString(0);
+	        String suspect = "", suspectPhoneNumber = "";
+	        do {
+	        	String suspectLookupKey = c.getString(c.getColumnIndexOrThrow(
+	        			ContactsContract.Contacts.LOOKUP_KEY));
+	        	if (lookupKey.equals(suspectLookupKey)) {
+	        		suspect = c.getString(c
+                            .getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME));
+	        		suspectPhoneNumber = c.getString(c
+                            .getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER));
+	        		break;
+	        	}
+	        	
+	        } while (c.moveToNext());
 	        mCrime.setSuspect(suspect);
+	        mCrime.setSuspectPhoneNumber(suspectPhoneNumber);
 	        mSuspectButton.setText(suspect);
 	        c.close();
 	    }

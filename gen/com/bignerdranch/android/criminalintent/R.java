@@ -1093,7 +1093,7 @@ containing a value of this type.
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050025;
         public static final int activity_chooser_view_content=0x7f050026;
-        public static final int add_crimeButton=0x7f05004a;
+        public static final int add_crimeButton=0x7f05004b;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
         public static final int checkbox=0x7f05002e;
@@ -1102,13 +1102,14 @@ containing a value of this type.
         public static final int collapseActionView=0x7f05000d;
         public static final int crime_date=0x7f050045;
         public static final int crime_date_time=0x7f05003f;
-        public static final int crime_list_item_dateTextView=0x7f05004d;
-        public static final int crime_list_item_solvedCheckBox=0x7f05004b;
-        public static final int crime_list_item_titleTextView=0x7f05004c;
-        public static final int crime_reportButton=0x7f050047;
-        public static final int crime_solved=0x7f050048;
-        public static final int crime_suspectBbutton=0x7f050049;
+        public static final int crime_list_item_dateTextView=0x7f05004e;
+        public static final int crime_list_item_solvedCheckBox=0x7f05004c;
+        public static final int crime_list_item_titleTextView=0x7f05004d;
+        public static final int crime_reportButton=0x7f050048;
+        public static final int crime_solved=0x7f050049;
+        public static final int crime_suspectBbutton=0x7f05004a;
         public static final int crime_suspectButton=0x7f050046;
+        public static final int crime_suspect_callButton=0x7f050047;
         public static final int crime_title=0x7f050044;
         public static final int default_activity_button=0x7f050029;
         public static final int dialog=0x7f05000e;
@@ -1128,9 +1129,9 @@ containing a value of this type.
         public static final int image=0x7f050028;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f05002a;
-        public static final int menu_item_delete_crime=0x7f05004e;
-        public static final int menu_item_new_crime=0x7f05004f;
-        public static final int menu_item_show_subtitle=0x7f050050;
+        public static final int menu_item_delete_crime=0x7f05004f;
+        public static final int menu_item_new_crime=0x7f050050;
+        public static final int menu_item_show_subtitle=0x7f050051;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
@@ -1287,28 +1288,31 @@ containing a value of this type.
         public static final int crime_details_label=0x7f0a0011;
         /**  Description crime report 
          */
-        public static final int crime_report=0x7f0a0026;
+        public static final int crime_report=0x7f0a0027;
         /**  Description crime report no suspects 
          */
-        public static final int crime_report_no_suspect=0x7f0a0029;
+        public static final int crime_report_no_suspect=0x7f0a002a;
         /**  Description crime report solved 
          */
-        public static final int crime_report_solved=0x7f0a0027;
+        public static final int crime_report_solved=0x7f0a0028;
         /**  Description crime report subject
          */
-        public static final int crime_report_subject=0x7f0a002b;
+        public static final int crime_report_subject=0x7f0a002c;
         /**  Description crime report suspect 
          */
-        public static final int crime_report_suspect=0x7f0a002a;
+        public static final int crime_report_suspect=0x7f0a002b;
         /**  Description crime report text 
          */
-        public static final int crime_report_text=0x7f0a0025;
+        public static final int crime_report_text=0x7f0a0026;
         /**  Description crime report unsolved 
          */
-        public static final int crime_report_unsolved=0x7f0a0028;
+        public static final int crime_report_unsolved=0x7f0a0029;
         /**  Description of crime solved 
          */
         public static final int crime_solved_label=0x7f0a0012;
+        /**  Description crime report call 
+         */
+        public static final int crime_suspect_call=0x7f0a0025;
         /**  Description choose a suspect text 
          */
         public static final int crime_suspect_text=0x7f0a0024;
@@ -1344,7 +1348,7 @@ containing a value of this type.
         public static final int no_results=0x7f0a0022;
         /**  Description send crime report 
          */
-        public static final int send_report=0x7f0a002c;
+        public static final int send_report=0x7f0a002d;
         /**  Description separator 
          */
         public static final int separator=0x7f0a001c;
